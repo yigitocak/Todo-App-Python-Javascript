@@ -1,0 +1,12 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
