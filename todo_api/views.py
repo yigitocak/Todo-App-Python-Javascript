@@ -31,3 +31,19 @@ def task_delete(request, id):
     if request.method == 'DELETE':
         task.delete()
         return Response({"message:" "task deleted"} ,status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['POST'])
+def task_finish(request, id):
+    try:
+        task = Task.objects.get(id=id)
+    except Task.DoesNotExist:
+        return Response({"message": "task does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'POST':
+        if task.status == "open":
+            task.status = 'done'
+            task.save()
+            serializer = TaskSerializer(task)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response({"message": "task is already done"}, status=status.HTTP_400_BAD_REQUEST)
