@@ -1,0 +1,42 @@
+.todo {
+  &__label {
+    display: block;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+  }
+
+  &__input{
+    width: 25vw;
+    height: 5vh;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+    border: none;
+    font-size: 1.40rem;
+    padding: 1rem 1.25rem;
+    font-family: Avenir, sans-serif, Sans;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__button {
+    width: 5vw;
+    height: 5.1vh;
+    position: relative;
+    top: 0;
+    font-size: 1.30rem;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    border: none;
+    background: #013f7c;
+    transition: background 0.25s;
+    color: white;
+    font-family: Avenir, sans-serif, Sans;
+
+    &:hover {
+      background: #004f9c;
+    }
+  }
+}
