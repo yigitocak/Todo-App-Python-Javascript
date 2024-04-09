@@ -3,7 +3,9 @@ import Todo from "../Todo/Todo"
 
 const Main = () => {
     return (
-        <main>
+        <main
+            className="main"
+        >
             <Todo />
         </main>
     )
