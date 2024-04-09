@@ -1,20 +1,23 @@
 .todo {
   &__label {
     display: block;
-    font-size: 3rem;
-    color: white;
+    font-size: 7rem;
+    color: #efd7d4;
     text-align: center;
+    margin-bottom: 1rem;
   }
 
   &__input{
-    width: 25vw;
-    height: 5vh;
+    width: 370px;
+    height: 4vh;
     border-bottom-left-radius: 25px;
     border-top-left-radius: 25px;
+    background: #2e3232;
     border: none;
     font-size: 1.40rem;
     padding: 1rem 1.25rem;
     font-family: Avenir, sans-serif, Sans;
+    color: #737273;
 
     &:focus {
       outline: none;
@@ -22,21 +25,20 @@
   }
 
   &__button {
-    width: 5vw;
-    height: 5.1vh;
-    position: relative;
-    top: 0;
-    font-size: 1.30rem;
+    width: 120px;
+    height: 39px;
+    font-size: 1.25rem;
+    font-weight: 500;
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
     border: none;
-    background: #013f7c;
+    background: #efd7d4;
     transition: background 0.25s;
-    color: white;
+    color: #2e3232;
     font-family: Avenir, sans-serif, Sans;
 
     &:hover {
-      background: #004f9c;
+      background: #d5c9c7;
     }
   }
 }

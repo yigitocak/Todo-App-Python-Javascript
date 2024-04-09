@@ -14,16 +14,17 @@ const TodoForm = () => {
             <label
                 className="todo__label"
                 htmlFor="todoInputId"
-            >Just do it</label>
+            >Just do it.</label>
             <input
                 name="todoInput"
                 className="todo__input"
                 id="todoInputId"
+                placeholder="Add a task."
             />
             <button
                 className="todo__button"
             >
-                ADD
+                I Got This!
             </button>
         </form>
     )
