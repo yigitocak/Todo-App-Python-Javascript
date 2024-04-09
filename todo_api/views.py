@@ -1,33 +1,33 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Todo
-from .serializers import TodoSerializer
+from .models import Task
+from .serializers import TaskSerializer
 from django.http import Http404
 from rest_framework import status
 
 @api_view(['GET'])
-def todo_list(request):
+def task_list(request):
     if request.method == 'GET':
-        todos = Todo.objects.all()
-        serializer = TodoSerializer(todos, many=True)
+        tasks = Task.objects.all()
+        serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 
 @api_view(['POST'])
-def todo_create(request):
+def task_create(request):
     if request.method == 'POST':
-        serializer = TodoSerializer(data=request.data)
+        serializer = TaskSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+        return Response({"message": "invalid request body"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
-def todo_delete(request, id):
+def task_delete(request, id):
     try:
-        todo = Todo.objects.get(id=id)
-    except Todo.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        task = Task.objects.get(id=id)
+    except Task.DoesNotExist:
+        return Response({"message": "task does not exist"},status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'DELETE':
-        todo.delete()
-        return Response({"message:" "Task Deleted"} ,status=status.HTTP_204_NO_CONTENT)
+        task.delete()
+        return Response({"message:" "task deleted"} ,status=status.HTTP_204_NO_CONTENT)
