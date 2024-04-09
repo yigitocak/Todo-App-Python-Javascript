@@ -29,7 +29,7 @@ const TodoItem = () => {
             <li
                 className="todo__item"
             >
-                li1
+                li2
                 <div>
                     <button
                         className="todo__button--done"
