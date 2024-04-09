@@ -2,9 +2,21 @@ import "./TodoItem.scss"
 
 const TodoItem = () => {
     return(
-        <li>
+        <>
+            <li
+                className="todo__item"
+            >
+                <input type="checkbox"/>
+                li1
+            </li>
+            <li
+                className="todo__item"
+            >
+                <input type="checkbox"/>
+                li1
+            </li>
 
-        </li>
+        </>
     )
 }
 
