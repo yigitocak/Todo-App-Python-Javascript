@@ -1,0 +1,39 @@
+.todo{
+  &__item{
+    list-style: none;
+    color: #a9a0a2;
+    font-size: 1.4rem;
+    background: #3a494f;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 25px;
+    border: none;
+  }
+
+  &__button--done, &__button--trash {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    margin-left: 0.5rem;
+    background: #a0a1a6;
+    transition: box-shadow 0.15s;
+
+    &:hover {
+      box-shadow: 0 0 4px 3px rgba(166,173,179, 0.3);
+    }
+  }
+
+  &__button-image {
+    padding-top: 0.1rem;
+    height: 27px;
+    width: 27px;
+  }
+}
+
