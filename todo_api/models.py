@@ -1,5 +1,5 @@
 from django.db import models
-# Ayri Ayri  List Eklemek
+
 
 class Task(models.Model):
     task_name = models.CharField(max_length=255)
