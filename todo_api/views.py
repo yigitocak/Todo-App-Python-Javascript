@@ -26,18 +26,18 @@ def task_delete(request, id):
     try:
         task = Task.objects.get(id=id)
     except Task.DoesNotExist:
-        return Response({"message": "task does not exist"},status=status.HTTP_404_NOT_FOUND)
+        return Response({"message": "task does not exist"},status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'DELETE':
         task.delete()
-        return Response({"message:" "task deleted"} ,status=status.HTTP_204_NO_CONTENT)
+        return Response({"message:" "task deleted"} ,status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def task_finish(request, id):
     try:
         task = Task.objects.get(id=id)
     except Task.DoesNotExist:
-        return Response({"message": "task does not exist"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"message": "task does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'POST':
         if task.status == "open":
