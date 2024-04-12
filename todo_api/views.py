@@ -32,14 +32,14 @@ def task_delete(request, id):
         task.delete()
         return Response({"message:" "task deleted"} ,status=status.HTTP_200_OK)
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def task_finish(request, id):
     try:
         task = Task.objects.get(id=id)
     except Task.DoesNotExist:
         return Response({"message": "task does not exist"}, status=status.HTTP_400_BAD_REQUEST)
 
-    if request.method == 'POST':
+    if request.method == 'PUT':
         if task.status == "open":
             task.status = 'done'
             task.save()
