@@ -1,11 +1,8 @@
 import "./TodoForm.scss"
+import {useState} from "react";
 
-const TodoForm = () => {
-    function submitHandler(e) {
-        e.preventDefault()
+const TodoForm = ({ submitHandler, handleInput, inputState}) => {
 
-        e.target.reset()
-    }
     return (
         <form
             className="todo__form"
@@ -14,11 +11,13 @@ const TodoForm = () => {
             <label
                 className="todo__label"
                 htmlFor="todoInputId"
-            >Just do it.</label>
+            >Make it happen.</label>
             <input
                 name="todoInput"
                 className="todo__input"
                 id="todoInputId"
+                value={inputState}
+                onChange={handleInput}
                 placeholder="Add a task."
             />
             <button
