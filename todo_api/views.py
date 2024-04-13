@@ -30,7 +30,7 @@ def task_delete(request, id):
 
     if request.method == 'DELETE':
         task.delete()
-        return Response({"message:" "task deleted"} ,status=status.HTTP_200_OK)
+        return Response({"message:" "task deleted"} ,status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['PUT'])
 def task_finish(request, id):
