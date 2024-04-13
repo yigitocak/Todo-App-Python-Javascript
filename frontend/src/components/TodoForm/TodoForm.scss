@@ -8,12 +8,13 @@
   }
 
   &__input{
-    width: 370px;
-    height: 4vh;
+    width: 65%;
+    height: 46px;
     border-bottom-left-radius: 25px;
     border-top-left-radius: 25px;
     background: #2e3232;
     border: none;
+    margin-left: 5rem;
     font-size: 1.40rem;
     padding: 1rem 1.25rem;
     font-family: Avenir, sans-serif, Sans;
@@ -26,8 +27,8 @@
 
   &__button {
     width: 120px;
-    height: 39px;
-    font-size: 1.25rem;
+    height: 46px;
+    font-size: 1.3rem;
     font-weight: 500;
     border-bottom-right-radius: 25px;
     border-top-right-radius: 25px;
