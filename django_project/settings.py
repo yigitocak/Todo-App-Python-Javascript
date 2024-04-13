@@ -25,6 +25,8 @@ SECRET_KEY = 'django-insecure-05&e-ndt4x@p_dko#0lhcj1%x#8q*i12+(56xn^!=!36tad(dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+
 ALLOWED_HOSTS = []
 
 
@@ -81,6 +83,9 @@ from dotenv import load_dotenv
 
 dotenv_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path=dotenv_path)
+
+#API KEY
+API_KEY = getenv('API_KEY')
 
 DATABASES = {
   'default': {
