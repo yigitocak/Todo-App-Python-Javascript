@@ -4,8 +4,10 @@ from .models import Task
 from .serializers import TaskSerializer
 from django.http import Http404
 from rest_framework import status
+from .decorators import api_key_required
 
 @api_view(['GET'])
+@api_key_required
 def task_list(request):
     if request.method == 'GET':
         tasks = Task.objects.all()
@@ -13,6 +15,7 @@ def task_list(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
+@api_key_required
 def task_create(request):
     if request.method == 'POST':
         serializer = TaskSerializer(data=request.data)
@@ -22,6 +25,7 @@ def task_create(request):
         return Response({"message": "invalid request body"}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
+@api_key_required
 def task_delete(request, id):
     try:
         task = Task.objects.get(id=id)
@@ -33,6 +37,7 @@ def task_delete(request, id):
         return Response({"message:" "task deleted"} ,status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['PUT'])
+@api_key_required
 def task_finish(request, id):
     try:
         task = Task.objects.get(id=id)
