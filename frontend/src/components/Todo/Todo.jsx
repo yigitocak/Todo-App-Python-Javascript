@@ -1,40 +1,31 @@
 import "./Todo.scss"
-import TodoForm from "../TodoForm/TodoForm"
+import {TodoForm} from "../TodoForm/TodoForm"
 import TodoList from "../TodoList/TodoList";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {baseUrl} from "../../utils/utils";
 
 const Todo = () => {
-    const [inputState, setInputState] = useState("")
-    const [todos, setTodos] = useState([])
+    const [fetchedData, setFetchedData] = useState([])
 
-    const handleInput = (e) => {
-        setInputState(e.target.value)
+    const fetch = async () => {
+        const response = await axios.get(`${baseUrl}tasks/`)
+        setFetchedData(response.data)
     }
 
-    function submitHandler(e) {
-        e.preventDefault()
+    useEffect(() => {
+        fetch()
+    },[])
 
-        if(inputState === "") return
-
-        setTodos([...todos,
-                {
-                    id: crypto.randomUUID(),
-                    task_name: inputState,
-                    priority: 0,
-                    status: "open"
-                }
-            ]
-        )
-
-        setInputState("")
+    if(!fetchedData){
+        <div>Loading...</div>
     }
-
     return (
         <section
             className="todo"
         >
-            <TodoForm submitHandler={submitHandler} handleInput={handleInput} inputState={inputState}/>
-            <TodoList setTodos={setTodos} todos={todos}/>
+            <TodoForm render={fetch}/>
+            <TodoList data={fetchedData} render={fetch}/>
         </section>
     )
 }

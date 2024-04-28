@@ -1,32 +1,40 @@
-import "./TodoForm.scss"
-import {useState} from "react";
+import "./TodoForm.scss";
+import { useState } from "react";
+import axios from "axios";
+import { baseUrl } from "../../utils/utils";
 
-const TodoForm = ({ submitHandler, handleInput, inputState}) => {
+export const TodoForm = ({render}) => {
+    const [inputField, setInputField] = useState("")
+
+    const sendData = async (e) => {
+        e.preventDefault()
+        if(inputField.trim() === "") return
+        const response = await axios.post(`${baseUrl}tasks/create/`, {
+            task_name: inputField.trim()
+        })
+        setInputField("")
+        render()
+    }
 
     return (
         <form
             className="todo__form"
-            onSubmit={submitHandler}
+            onSubmit={sendData}
         >
-            <label
-                className="todo__label"
-                htmlFor="todoInputId"
-            >Make it happen.</label>
+            <label className="todo__label" htmlFor="todoInputId">
+                Make it happen.
+            </label>
             <input
                 name="todoInput"
                 className="todo__input"
                 id="todoInputId"
-                value={inputState}
-                onChange={handleInput}
+                value={inputField}
+                onChange={(e) => setInputField(e.target.value)}
                 placeholder="Add a task."
             />
-            <button
-                className="todo__button"
-            >
+            <button type="submit" className="todo__button">
                 I Got This!
             </button>
         </form>
-    )
-}
-
-export default TodoForm
+    );
+};
